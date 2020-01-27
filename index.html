@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quiz Game</title>
+    <link rel="stylesheet" href="reset/reset.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <script
@@ -13,20 +14,36 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
-    <section id="title">
+    <section id="container">
+        <div class="title">
         <h1>QUIZZIA</h1>
-
-    </section>
-
+        </div>
+ <!--Press to Start  -->
+<div id="startGame">
 <h3 id="pressKey">PRESS ANY KEY TO START</h3>
+</div>
 <!-- for QUESTION -->
-<div id="gameplay"> 
+
 <div class="question-list">
 <form action="", id="question-list">
-    
-
-
-
+    <div id="question-1">
+    <p>Who are You?</p>
+    <input type="text" id="yourChoice">
+</div>
+    <div id="question-2">
+    <p>Who are You?</p>
+  <button>Answer 1</button>
+  <button>Answer 2</button>
+  <button>Answer 3</button>
+  <button>Answer 4</button>
+</div>
+    <div id="question-3">
+    <p>Who are You?</p>
+  <button>Answer 1</button>
+  <button>Answer 2</button>
+  <button>Answer 3</button>
+  <button>Answer 4</button>
+</div>
 
 
 
@@ -36,8 +53,23 @@
 
 
 
+
 </div>
-</div>
+
+<div id="highScore">High Score</div>
+<div id="nextQuestion">Next</div>
+<div id="restart">Restart</div>
+
+
+
+
+
+</section>
+
+
+
+
+
     
 
 
