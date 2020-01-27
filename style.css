@@ -3,4 +3,12 @@ body {
     font-family: 'Press Start 2P', cursive;
     margin: 0;
     padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+width: 50%;
+display: block;
+margin: auto;
 }
