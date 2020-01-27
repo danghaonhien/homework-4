@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="reset/reset.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -16,7 +17,7 @@
 <body>
     <section id="container">
       
-        <h1>QUIZZIA</h1>
+        <h1 class="title">QUIZZIA</h1>
  <!--Press to Start  -->
 <div id="startGame">
 <h3 id="pressKey">PRESS ANY KEY TO START</h3>
@@ -25,17 +26,26 @@
 <!-- for QUESTION -->
 
 <div class="question-list">
+    <div id="question"><h3>This is a question</h3></div>
 <div class="row">
-<div type="button" id="green" class="btn">Answer 1</div>
+<div type="button" id="answer-1" class="btn">Answer 1</div>
+<div type="button" id="answer-2" class="btn">Answer 2</div>
+</div>
 
+<div class="row">
+<div type="button" id="answer-3" class="btn">Answer 3</div>
+<div type="button" id="answer-4" class="btn">Answer 4</div>
 </div>
 
 </div>
 
 <div class="functions">
-<div id="highScore">High Score</div>
-<div id="nextQuestion">Next</div>
-<div id="restart">Restart</div>
+
+<div id="nextQuestion" class="btn-1">Next</div>
+<div id="highScore" class="btn-1">High Score
+    <p id="highScoreValue" class="btn-1"></p>
+</div>
+<div id="restart" class="btn-1">Restart</div>
 </div>
 
 
