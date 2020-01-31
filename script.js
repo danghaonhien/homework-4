@@ -2,9 +2,15 @@
 let start = false;
 let level = 0;
 let countdown = 0;
-let correct = 0;
+let nextButton = $("#nextQuestion");
+let answerValue = document.querySelector("#btn-answer");
 let shuffleQuestions , currentQuestionNum;
-$(document).keypress(function() {
+$("#nextQuestion").on("click" , function() {
+    currentQuestionNum++;
+    nextQuestion();
+})
+
+let startGame = $(document).keypress(function() {
   if (!start) {
     start = true;
 
@@ -19,13 +25,14 @@ $(document).keypress(function() {
       timeLeft -= 1;
       if (timeLeft <= 0) {
         clearInterval(countdownTimer);
-    
+
         // Shuffle questions
-        shuffleQuestions = myQuestions.sort(() => Math.random() - 0.5)
+        shuffleQuestions = myQuestions.sort(() => Math.random() - 0.5);
         currentQuestionNum=0;
-         // Show questions
-        $("#question-list").removeClass("hide")
-        nextQuestion();
+        // Show questions
+        $("#question-list").removeClass("hide");
+        //   nextQuestion();
+       nextQuestion();
         //High Score Timer
         let highscore = 100;
         let highscoreTimer = setInterval(function() {
@@ -34,6 +41,7 @@ $(document).keypress(function() {
             highscore + " seconds remaining"
           );
           highscore -= 1;
+          
           if (highscore <= 0) {
             clearInterval(highscoreTimer);
 
@@ -45,31 +53,50 @@ $(document).keypress(function() {
 
         $("pressKey").html = $("#pressKey").text("Level " + level);
       }
-    }, 1000);
-
-     
+    }, 1000); 
   } 
+ 
 });
 
 // NextQuestion
 function nextQuestion() {
-    showQuestions(shuffleQuestions[currentQuestionNum])
-};
-
-function showQuestions(myQuestions) {
- $("#question").text(myQuestions.question);
-
- $.each(myQuestions.answer, function(i, val) {
-    $(".btn" + i).append( " " + val );
-  });
-
+  resetState();
+  showQuestions(shuffleQuestions[currentQuestionNum]);
 }
 
-// SHOW QUESTION
-// $(".btn").click(function() {
+function showQuestions(question) {
+  $("#question").text(question.question);
+
+  question.answers.forEach(answers => {
+    const button = document.createElement('button');
+    button.innerText=answers.text;
+    button.classList.add("btn");
+    if (answers.correct) {
+      button.dataset.correct=answers.correct;
+    }
+    button.addEventListener("click", chosenAnswer) 
+    answerValue.appendChild(button);
+  });
+}
+function resetState() {
+    clearState(document.body);
+    while(answerValue.firstChild) {
+      answerValue.removeChild(answerValue.firstChild);
+    }
+  }
+
+function chosenAnswer(e) {
+  let chosenButton = e.target;
+  let correct = chosenButton.dataset.correct;
+  //set current state for answer
+  currentState(document.body, correct);
+  Array.from(answerValue.children).forEach(button => {
+    currentState(button, button.dataset.correct);
+  });
   
-//   checkAnswer();
-// });
+}
+
+
 
 // function checkAnswer(currentLevel) {
 //     let chosenAnswer = myQuestions[i];
@@ -86,55 +113,55 @@ function showQuestions(myQuestions) {
 //   }
 // }
 
-// function rightOrWrong(element, correct) {
-    
 
+// $("#restart").on("click" , function(){
+// startGame();
+// })
 
-// }
+function currentState(element, correct) {
+  clearState(element);
+  if(correct) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+}
+function clearState(element) {
+  element.classList.remove("correct");
+  element.classList.remove("wrong");
+}
 
-// function checkAnswer() {
-// }
-    let myQuestions = [
-        {
-          question: "Where is the Corona virus from?",
-          answer: [{text:"WC", correct:false},
-          {text:"SF", correct:false},
-          {text:"WH", correct:true},
-          {text:"NY", correct:false},
-        ]
-        },
-        {
-          question: "Which game is made from Ubisoft?",
-          answer: [{text:"Fifa", correct:false},
-          {text:"Tetris", correct:false},
-          {text:"Dragon Age", correct:true},
-          {text:"CS", correct:false},
-        ]
-        },
-        {
-          question: "Where is the Corona virus from?",
-          answer: [{text:"WC", correct:false},
-          {text:"SF", correct:false},
-          {text:"WH", correct:true},
-          {text:"NY", correct:false},
-        ]
-        },
-        
-        
-      ];
-
-
-
-
-
-
-
-
+let myQuestions = [
+  {
+    question: "Where is the Corona virus coming from?",
+    answers: [
+      { text: "WC", correct: false },
+      { text: "SF", correct: false },
+      { text: "WH", correct: true },
+      { text: "NY", correct: false }
+    ]
+  },
+  {
+    question: "Which game is made from Ubisoft?",
+    answers: [
+      { text: "Fifa", correct: false },
+      { text: "Tetris", correct: false },
+      { text: "Dragon Age", correct: true },
+      { text: "CS", correct: false }
+    ]
+  },
+  {
+    question: "Where is the Corona virus from?",
+    answers: [
+      { text: "WC", correct: false },
+      { text: "SF", correct: false },
+      { text: "WH", correct: true },
+      { text: "NY", correct: false }
+    ]
+  }
+];
 
 function playSound(name) {
   var audio = new Audio("sound/" + name + ".mp3");
   audio.play();
 }
-
-
-

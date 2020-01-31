@@ -56,6 +56,16 @@ body {
     color: #232619;
     border-radius: 1em;
 }
+button {
+    padding: 2em;
+    opacity: .1;
+    background-color: #F2F2F2;
+    height: 1em;
+    width: 50%;
+    margin: 1em;
+    color: #232619;
+    border-radius: 1em;
+}
 
 .btn-1 {
     padding: 1em;
@@ -66,7 +76,16 @@ body {
     text-align: center;
     justify-content: center;
     padding: 2em;
+    
 }
+/* body.correct {
+    --hue: var(--hue-correct);
+  }
+  
+  body.wrong {
+   background-color:blue;
+  } */
+  
 
 Color Theme Swatches in Hex
 .The-Invasion.-Game-concept-1-hex { color: #232619; }
