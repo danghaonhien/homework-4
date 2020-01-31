@@ -38,17 +38,19 @@ body {
         font-family: 'Roboto', sans-serif;
         padding: 1em;
         font-weight: bold;
+      
     }
 .btn {
     padding: 2em;
-    border: solid .2em;
-    border-color: #545942;;
-    border-radius: 1em;
+    opacity: .1;
+    background-color: #F2F2F2;
     height: 1em;
     width: 50%;
     margin: 1em;
-    color: #BCBFB0;
+    color: #232619;
+    border-radius: 1em;
 }
+
 .btn-1 {
     padding: 1em;
 }

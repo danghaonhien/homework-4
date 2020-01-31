@@ -2,6 +2,8 @@
 let start= false;
 let level = 0;
 let countdown=0;
+
+// create object of questions, options and answer
 let myQuestions =[ {
 question: "Question 1?",
 options: ["a","b","c","d"],
@@ -73,8 +75,8 @@ $(document).keypress(function() {
 
 //SHOW QUESTION
 $(".btn").click(function(){
-
-checkAnswer(myQuestions);
+$(this);
+checkAnswer(chosenAnswer);
 }
 )
 
