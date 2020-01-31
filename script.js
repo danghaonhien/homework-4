@@ -34,7 +34,7 @@ let startGame = $(document).keypress(function() {
         //   nextQuestion();
        nextQuestion();
         //High Score Timer
-        let highscore = 100;
+         highscore = 100;
         let highscoreTimer = setInterval(function() {
           $("#highScore").value = highscore - 1;
           $("#highScore").html = $("#highScore").text(
@@ -73,9 +73,12 @@ function showQuestions(question) {
     button.classList.add("btn");
     if (answers.correct) {
       button.dataset.correct=answers.correct;
+    } else {
+        button.dataset.wrong=answers.wrong;
     }
     button.addEventListener("click", chosenAnswer) 
     answerValue.appendChild(button);
+    
   });
 }
 function resetState() {
@@ -88,10 +91,24 @@ function resetState() {
 function chosenAnswer(e) {
   let chosenButton = e.target;
   let correct = chosenButton.dataset.correct;
+
+ 
+ 
+  $(this).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).css("backgroundColor", "#72A68E");
+    if (chosenButton.dataset.correct = correct) {
+      playSound("correct");
+      $("#pressKey").text("Congratulation");
+    } else{
+      playSound("wrong");
+      $(this).css("backgroundColor", "#BF565F").css("color", "#F2F2F2");
+      highscore -=10;
+}
   //set current state for answer
   currentState(document.body, correct);
   Array.from(answerValue.children).forEach(button => {
     currentState(button, button.dataset.correct);
+  
+
   });
   
 }
@@ -122,6 +139,7 @@ function currentState(element, correct) {
   clearState(element);
   if(correct) {
     element.classList.add("correct");
+
   } else {
     element.classList.add("wrong");
   }
@@ -145,8 +163,8 @@ let myQuestions = [
     question: "Which game is made from Ubisoft?",
     answers: [
       { text: "Fifa", correct: false },
-      { text: "Tetris", correct: false },
-      { text: "Dragon Age", correct: true },
+      { text: "Tetris", correct: true },
+      { text: "Dragon Age", correct: false },
       { text: "CS", correct: false }
     ]
   },

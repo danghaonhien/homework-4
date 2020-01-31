@@ -46,19 +46,26 @@ body {
         font-weight: bold;
       
     }
+    #question {
+        padding: 1em;
+    }
 .btn {
     padding: 2em;
-    opacity: .1;
+    
     background-color: #F2F2F2;
     height: 1em;
     width: 50%;
     margin: 1em;
     color: #232619;
     border-radius: 1em;
+    font-weight: bold;
+}
+.btn:hover {
+    border: #F2163E solid 2px;
 }
 button {
     padding: 2em;
-    opacity: .1;
+    opacity: .3;
     background-color: #F2F2F2;
     height: 1em;
     width: 50%;
@@ -78,13 +85,13 @@ button {
     padding: 2em;
     
 }
-/* body.correct {
-    --hue: var(--hue-correct);
+body.correct {
+    background-color:#545942;
   }
   
   body.wrong {
-   background-color:blue;
-  } */
+   background-color:#8C0303;
+  }
   
 
 Color Theme Swatches in Hex
