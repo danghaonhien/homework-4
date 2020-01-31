@@ -29,7 +29,7 @@ body {
  
     }
 #question-list {
-        border: 2em;
+        border: .5em;
         border-color: #545942;
         border-radius: 3em;
         border-style: solid ;
@@ -59,9 +59,11 @@ body {
     color: #232619;
     border-radius: 1em;
     font-weight: bold;
+    box-shadow: 0 0 10px 2px;
 }
 .btn:hover {
     border: #F2163E solid 2px;
+  
 }
 button {
     padding: 2em;
@@ -72,6 +74,7 @@ button {
     margin: 1em;
     color: #232619;
     border-radius: 1em;
+    
 }
 
 .btn-1 {

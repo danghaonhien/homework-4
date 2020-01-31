@@ -100,6 +100,7 @@ function chosenAnswer(e) {
       $("#pressKey").text("Congratulation");
     } else{
       playSound("wrong");
+      $("#pressKey").text("Try Again!");
       $(this).css("backgroundColor", "#BF565F").css("color", "#F2F2F2");
       highscore -=10;
 }
