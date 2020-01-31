@@ -21,17 +21,23 @@ body {
     padding: 1em;
     color: #BCBFB0;
 }
+
 #container {
     width: 50%;
     display: block;
     margin: auto;
  
     }
-.question-list {
+#question-list {
         border: 2em;
         border-color: #545942;
         border-radius: 3em;
         border-style: solid ;
+        box-shadow: 0 0 10px 2px;
+   
+    }
+    .hide{
+        display:none;
     }
 .row {
         display: inline-block;
