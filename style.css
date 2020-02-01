@@ -14,11 +14,12 @@ body {
 }
 
 #startGame {
-  padding: 1em;
+  padding: .25em;
 }
 #question {
   padding: 1em;
   color: #bcbfb0;
+  line-height: 1.5em;
 }
 
 #container {
@@ -27,6 +28,7 @@ body {
   margin: auto;
 }
 #question-list {
+   height: auto;
   border: 0.5em;
   border-color: #545942;
   border-radius: 3em;

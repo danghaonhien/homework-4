@@ -64,6 +64,8 @@ let startGame = $(document).keypress(function() {
 function nextQuestion() {
   resetState();
   showQuestions(shuffleQuestions[currentQuestionNum]);
+  level++;
+  $("pressKey").html = $("#pressKey").text("Level " + level);
 }
 
 function showQuestions(question) {
@@ -100,6 +102,10 @@ function chosenAnswer(e) {
     if (chosenButton.dataset.correct = correct) {
       playSound("correct");
       $("#pressKey").text("Congratulation");
+      $(".btn").on("click" , function() {
+        currentQuestionNum++;
+        nextQuestion();
+    })
     } else{
       playSound("wrong");
       $("#pressKey").text("Try Again!");
@@ -113,30 +119,15 @@ function chosenAnswer(e) {
   
 
   });
+  if(shuffleQuestions.length > currentQuestionNum + 4) {
   
+    $("#yourScore").html = $("#yourScore").text(" Your score is " + highscoreTimer) 
+  }
 }
 
 
 
-// function checkAnswer(currentLevel) {
-//     let chosenAnswer = myQuestions[i];
-//   if (chosenAnswer[currentLevel] === myQuestions[currentLevel]) {
-//     if (chosenAnswer.value = myQuestions[(1, 2)]) {
-//       playSound("correct");
-//       $("#pressKey").text("Congratulation");
-//       setTimeout(function() {
-//         $("body").removeClass("hide");
-//       }, 200);
-//     } else {
-//       playSound("wrong");
-//     }
-//   }
-// }
 
-
-// $("#restart").on("click" , function(){
-// startGame();
-// })
 
 function currentState(element, correct) {
   clearState(element);
@@ -165,21 +156,30 @@ let myQuestions = [
   {
     question: "Which game is made from Ubisoft?",
     answers: [
-      { text: "Fifa", correct: false },
+      { text: "LoL", correct: false },
       { text: "Tetris", correct: true },
-      { text: "Dragon Age", correct: false },
+      { text: "Dark Soul", correct: false },
       { text: "CS", correct: false }
     ]
   },
   {
-    question: "Where is the Corona virus from?",
+    question: "2020 is the year of which animal in parts of Asian culture?",
     answers: [
-      { text: "WC", correct: false },
-      { text: "SF", correct: false },
-      { text: "WH", correct: true },
-      { text: "NY", correct: false }
+      { text: "Hourse", correct: false },
+      { text: "Dragon", correct: false },
+      { text: "Tiger", correct: false },
+      { text: "Rat", correct: true }
     ]
-  }
+  },
+   {
+    question: "Which one of these are the hardest trail in Zion National Park?",
+    answers: [
+      { text: "Angel Landings", correct: true },
+      { text: "Emerald Pool", correct: false },
+      { text: "Watchman Trail", correct: false },
+      { text: "Pa'rus Trail", correct: false }
+    ]
+   } 
 ];
 
 function playSound(name) {
