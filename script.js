@@ -9,7 +9,7 @@ $("#nextQuestion").on("click" , function() {
     currentQuestionNum++;
     nextQuestion();
 })
-
+$("#instruction").removeClass("hide2");
 let startGame = $(document).keypress(function() {
   if (!start) {
     start = true;
@@ -18,6 +18,7 @@ let startGame = $(document).keypress(function() {
 
     let timeLeft = 3;
     let countdownTimer = setInterval(function() {
+       
       $("pressKey").value = timeLeft - 1;
       $("#pressKey").html = $("#pressKey").text(
         timeLeft + " seconds remaining"
@@ -31,6 +32,7 @@ let startGame = $(document).keypress(function() {
         currentQuestionNum=0;
         // Show questions
         $("#question-list").removeClass("hide");
+        $("#instruction").addClass("hide2")
         //   nextQuestion();
        nextQuestion();
         //High Score Timer
