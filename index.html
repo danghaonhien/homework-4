@@ -20,26 +20,22 @@
         <h1 class="title">QUIZZIA</h1>
  <!--Press to Start  -->
 <div id="startGame">
-<h3 id="pressKey"  value="0" max="3" value="0" max="3">PRESS ANY KEY TO START</h3>
+    <p id="yourScore"  value="0" max="100"></p>
+<h3 id="pressKey"  value="0" max="3" value="0" max="3" class="hide2">PRESS ANY KEY TO START</h3>
 <br>
 <br>
 <p id="instruction" class="hide2" style="line-height: 2em;">Answer all questions in 100 seconds. Time will be counting down and everytime you make a wrong choice, your time will be decreased by 10 seconds. The remaining time will be your score. Goodluck and Enjoy!</p>
-<p id="yourScore" class="hide2">Your score is:</p>
+
 </div>
 <!-- for QUESTION -->
 
 <div id="question-list" class="hide">
     <div id="question"></div>
-    <div id="btn-answer">
-<div class="row">
+    <div id="btn-answer" class="grid">
 <div type="button" id="answer-1" class="btn">Answer 1</div>
 <div type="button" id="answer-2" class="btn">Answer 2</div>
-</div>
-
-<div class="row">
 <div type="button" id="answer-3" class="btn" class="btn-answer">Answer 3</div>
 <div type="button" id="answer-4" class="btn">Answer 4</div>
-</div>
 </div>
 </div>
 
@@ -47,9 +43,8 @@
 
 <div id="nextQuestion" class="btn-1">Next</div>
 <div id="highScore" class="btn-1" value="0" max="100">High Score
-    
 </div>
-<div id="restart" class="btn-1">Restart</div>
+<div id="reset" class="btn-1">Restart</div>
 </div>
 
 

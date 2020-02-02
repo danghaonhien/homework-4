@@ -21,13 +21,17 @@ body {
   color: #bcbfb0;
   line-height: 1.5em;
 }
+#instruction:hover {
+  background-color: #545942;
+}
 
 #container {
-  width: 50%;
+  width: 750px;
   display: block;
   margin: auto;
 }
 #question-list {
+  width: 750px;
    height: auto;
   border: 0.5em;
   border-color: #545942;
@@ -41,39 +45,38 @@ body {
 .hide2 {
     display: none;
 }
-.row {
-  display: inline-block;
-  font-family: "Roboto", sans-serif;
-  padding: 1em;
-  font-weight: bold;
-}
-#question {
-  padding: 1em;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 15px;
+
 }
 .btn {
   padding: 2em;
-
   background-color: #f2f2f2;
   height: 1em;
-  width: 50%;
+  text-align: center;
   margin: 1em;
   color: #232619;
   border-radius: 1em;
   font-weight: bold;
-  box-shadow: 0 0 10px 2px;
+ align-items: center;
+ justify-content: center;
 }
 .btn:hover {
   border: #f2163e solid 2px;
+  box-shadow: 0 0 10px 2px;
 }
 button {
   padding: 2em;
   opacity: 0.3;
   background-color: #f2f2f2;
   height: 1em;
-  width: 50%;
+  
   margin: 1em;
   color: #232619;
   border-radius: 1em;
+  flex-direction: row;
 }
 
 .btn-1 {
