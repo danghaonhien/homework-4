@@ -10,7 +10,11 @@ $("#pressKey").removeClass('hide2')
 $("#nextQuestion").on("click", function(event) {
   event.preventDefault();
   currentQuestionNum++;
-  nextQuestion();
+  // nextQuestion();
+  if(currentQuestionNum ==  myQuestions.length) {
+    ended=true
+    $("#question-list").addClass('hide')
+  }else {nextQuestion()}
 });
 $("#instruction").removeClass("hide2");
 let startGame = $(document).keypress(function() {
@@ -55,7 +59,7 @@ let startGame = $(document).keypress(function() {
           }else if (!ended) {
            
             
-            $("#yourScore").text("Your Highscore " + highscore)
+            $("#yourScore").text("Your Highscore: " + highscore)
             
             // clearInterval(highscoreTimer);
           }
@@ -68,8 +72,7 @@ let startGame = $(document).keypress(function() {
 });
 
 $("#reset").on("click", function(){
-  ended=true
-  $("#question-list").addClass('hide')
+startOver();
 })
 // function yourScore(){
 //   let yourHighscore = highscoreTimer.value;
@@ -109,14 +112,17 @@ function chosenAnswer(e) {
     .css("backgroundColor", "#72A68E");
   if ((chosenButton.dataset.correct = correct)) {
     playSound("correct");
-    $("#pressKey").text("Congratulation");
+    $("#highScore").text("Congratulation");
     $(".btn").on("click", function() {
       currentQuestionNum++;
-      nextQuestion();
+      if(currentQuestionNum ==  myQuestions.length) {
+        ended=true
+        $("#question-list").addClass('hide')
+      }
     });
   } else {
     playSound("wrong");
-    $("#pressKey").text("Try Again!");
+    $("#highScore").text("Try Again!");
     $(this)
       .css("backgroundColor", "#BF565F")
       .css("color", "#F2F2F2");
@@ -127,6 +133,8 @@ function chosenAnswer(e) {
   Array.from(answerValue.children).forEach(button => {
     currentState(button, button.dataset.correct);
   });
+ 
+ 
 
   //   if(shuffleQuestions = lastQuestion  ) {
   //       $("#question-list").addClass("hide")
@@ -197,22 +205,18 @@ function showQuestions(question) {
     if (answers.correct) {
       button.dataset.correct = answers.correct;
     }
-    button.addEventListener("click", chosenAnswer);
+    button.addEventListener("click", chosenAnswer );
     answerValue.append(button);
   });
 }
-let lastQuestion = myQuestions[0].length;
+
 
 function startOver() {
   level = 0;
   myQuestions.question = [];
   started = false;
 }
-$("#reset").on("click", function() {
-  startOver();
-  currentQuestionNum++;
-  $("#");
-});
+
 
 function playSound(name) {
   var audio = new Audio("sound/" + name + ".mp3");
