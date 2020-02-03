@@ -1,26 +1,31 @@
+window.onload = function(){
 // Press Any Key to Start
 let start = false;
 let level = 0;
-let countdown = 0;
-let nextButton = $("#nextQuestion");
+let highscore = 100;
 let answerValue = document.querySelector("#btn-answer");
 let shuffleQuestions, currentQuestionNum;
 let ended = false;
+let bestScore
 $("#pressKey").removeClass('hide2')
-
+//Next Question Click
 $("#nextQuestion").on("click", function(event) {
   event.preventDefault();
   currentQuestionNum++;
-  // nextQuestion();
+  //If last Question, stop countdown
   if(currentQuestionNum ==  myQuestions.length) {
     ended=true
+    bestScore = Math.min(highscore, bestScore)
+    localStorage.setItem("Quizzia", bestScore);
     $("#question-list").addClass('hide')
     $("#form").removeClass('hide3')
     $("#highScore").text("Thank you !")
   }else {nextQuestion()}
 });
+
+
 $("#instruction").removeClass("hide2");
-let startGame = $(document).keypress(function() {
+$(document).keypress(function() {
   if (!start) {
     start = true;
 
@@ -45,7 +50,7 @@ let startGame = $(document).keypress(function() {
         //   nextQuestion();
         nextQuestion();
         //High Score Timer
-        highscore = 100;
+       
         let highscoreTimer = setInterval(function() {
           $("#highScore").value = highscore - 1;
           // $("#highScore").html = $("#highScore").text(
@@ -56,23 +61,29 @@ let startGame = $(document).keypress(function() {
           if (highscore <= 0) {
             clearInterval(highscoreTimer);
           }else if (!ended) {
-            $("#yourScore").text("Your Highscore: " + highscore)
-          
-            // clearInterval(highscoreTimer);
+           
+            
+            $("#yourScore").text("Highscore: " + highscore)
+         $("#bestScore").text("Bestscore: " + bestScore)
+            
           }
         }, 1000);
 
         $("#highScore").text("Level " + level);
       }
     }, 1000);
+    //Reset button
+$("#restartBtn").on("click", function(){
+level=0
+  myQuestions.question = [];
+  started = false;
+
+
+})
   }
 });
 
-$("#reset").on("click", function(){
-  level = 0;
-  myQuestions.question = [];
-  started = false;
-})
+
 
 //Next Question
 
@@ -209,11 +220,12 @@ function showQuestions(question) {
   });
 }
 
-
+bestScore = localStorage.getItem("Quzzia") == null ? 100 : localStorage.getItem("Quizzia");
 
 
 
 function playSound(name) {
   var audio = new Audio("sound/" + name + ".mp3");
   audio.play();
+}
 }
