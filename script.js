@@ -7,6 +7,7 @@ let answerValue = document.querySelector("#btn-answer");
 let shuffleQuestions, currentQuestionNum;
 let ended = false;
 $("#pressKey").removeClass('hide2')
+
 $("#nextQuestion").on("click", function(event) {
   event.preventDefault();
   currentQuestionNum++;
@@ -14,6 +15,7 @@ $("#nextQuestion").on("click", function(event) {
   if(currentQuestionNum ==  myQuestions.length) {
     ended=true
     $("#question-list").addClass('hide')
+    $("#form").removeClass('hide3')
   }else {nextQuestion()}
 });
 $("#instruction").removeClass("hide2");
@@ -118,6 +120,7 @@ function chosenAnswer(e) {
       if(currentQuestionNum ==  myQuestions.length) {
         ended=true
         $("#question-list").addClass('hide')
+        $("#form").removeClass('hide3')
         $("#highScore").text("Thank you!")
       }
     });
