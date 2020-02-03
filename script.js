@@ -60,12 +60,12 @@ let startGame = $(document).keypress(function() {
            
             
             $("#yourScore").text("Your Highscore: " + highscore)
-            
+            $("#highScore").text("Thank you!")
             // clearInterval(highscoreTimer);
           }
         }, 1000);
 
-        $("#highScore").html = $("#pressKey").text("Level " + level);
+        $("#highScore").text("Level " + level);
       }
     }, 1000);
   }
@@ -118,6 +118,7 @@ function chosenAnswer(e) {
       if(currentQuestionNum ==  myQuestions.length) {
         ended=true
         $("#question-list").addClass('hide')
+        $("#highScore").text("Thank you!")
       }
     });
   } else {

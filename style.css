@@ -29,6 +29,9 @@ body {
   width: 750px;
   display: block;
   margin: auto;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 #question-list {
   width: 750px;
@@ -88,6 +91,7 @@ button {
   text-align: center;
   justify-content: center;
   padding: 2em;
+  align-items: center;
 }
 body.correct {
   background-color: #545942;
