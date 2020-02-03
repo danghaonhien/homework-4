@@ -16,6 +16,7 @@ $("#nextQuestion").on("click", function(event) {
     ended=true
     $("#question-list").addClass('hide')
     $("#form").removeClass('hide3')
+    $("#highScore").text("Thank you !")
   }else {nextQuestion()}
 });
 $("#instruction").removeClass("hide2");
@@ -54,15 +55,9 @@ let startGame = $(document).keypress(function() {
 
           if (highscore <= 0) {
             clearInterval(highscoreTimer);
-
-            // $("#highScore").html = $("#highScore").text(
-            //   "High Score: " + highscore
-            // );
           }else if (!ended) {
-           
-            
             $("#yourScore").text("Your Highscore: " + highscore)
-            $("#highScore").text("Thank you!")
+          
             // clearInterval(highscoreTimer);
           }
         }, 1000);
@@ -74,17 +69,13 @@ let startGame = $(document).keypress(function() {
 });
 
 $("#reset").on("click", function(){
-startOver();
+  level = 0;
+  myQuestions.question = [];
+  started = false;
 })
-// function yourScore(){
-//   let yourHighscore = highscoreTimer.value;
-//   $("#pressKey").html.$("#pressKey").text("Your Highscore is " + yourHighscore)
 
-// if(highscore.value === lastQuestion.value) {
-//   yourScore()
-// }}
+//Next Question
 
-// NextQuestion
 function nextQuestion() {
   resetState();
   showQuestions(shuffleQuestions[currentQuestionNum]);
@@ -121,7 +112,7 @@ function chosenAnswer(e) {
         ended=true
         $("#question-list").addClass('hide')
         $("#form").removeClass('hide3')
-        $("#highScore").text("Thank you!")
+        $("#highScore").text("Thank you !")
       }
     });
   } else {
@@ -136,14 +127,9 @@ function chosenAnswer(e) {
   currentState(document.body, correct);
   Array.from(answerValue.children).forEach(button => {
     currentState(button, button.dataset.correct);
+    
   });
- 
- 
-
-  //   if(shuffleQuestions = lastQuestion  ) {
-  //       $("#question-list").addClass("hide")
-  //     $("#pressKey").html = $("#pressKey").text("Your Score is " + highscoreTimer)
-  //   }
+  
 }
 
 function currentState(element, correct) {
@@ -195,6 +181,15 @@ let myQuestions = [
       { text: "Watchman Trail", correct: false },
       { text: "Pa'rus Trail", correct: false }
     ]
+  },
+  {
+    question: "2019 America Got Talent is a ________",
+    answers: [
+      { text: "Solo Singer", correct: false },
+      { text: "Dancer", correct: false },
+      { text: "Magician", correct: true},
+      { text: "illusionist", correct: false }
+    ]
   }
 ];
 function showQuestions(question) {
@@ -215,11 +210,7 @@ function showQuestions(question) {
 }
 
 
-function startOver() {
-  level = 0;
-  myQuestions.question = [];
-  started = false;
-}
+
 
 
 function playSound(name) {
