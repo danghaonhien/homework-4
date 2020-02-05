@@ -52,6 +52,11 @@ font-weight: bold;
 #bestScore {
   padding: 1.5em;
 }
+
+#fullName {
+  padding: 1.5em;
+  color: #bcbfb0;
+}
 .hide {
   display: none;
 }
@@ -91,6 +96,12 @@ font-weight: bold;
 #btnForm:hover {
   border: #232619 solid 2px;
   box-shadow: 0 0 10px 2px;
+}
+#nextQuestion:hover {
+ transform: rotate(-5deg);
+}
+#restartBtn:hover {
+ transform: rotate(-5deg);
 }
 
 button {

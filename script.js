@@ -7,8 +7,7 @@ window.onload = function() {
   let shuffleQuestions, currentQuestionNum;
   let ended = false;
   let bestScore;
-  let savedScore;
-  $("#pressKey").removeClass("hide2");
+  $("#pressKey").removeClass("hide2"); 
   //Next Question Click
   $("#nextQuestion").on("click", function(event) {
     event.preventDefault();
@@ -16,16 +15,34 @@ window.onload = function() {
     //If last Question, stop countdown
     if (currentQuestionNum == myQuestions.length) {
       ended = true;
-      bestScore = Math.min(highscore, bestScore);
-      localStorage.setItem("Quizzia", bestScore);
+      bestScore = Math.max(highscore, bestScore);
+      localStorage.setItem("Quizzia", highscore);
       $("#question-list").addClass("hide");
-      $("#form").removeClass("hide3");
       $("#bestScore").removeClass("hide2");
+      $("#form").removeClass("hide2");
       $("#highScore").text("Thank you !");
+       
     } else {
       nextQuestion();
     }
   });
+ //best score button
+ $("#btnForm").on("click", function(event) {
+  event.preventDefault();
+  var user = {
+    FullName: $("#formName").value
+  };
+ 
+  $("#fullName").removeClass("hide2");
+if(user.FullName === " ") {
+
+} else {
+ let lastUser=localStorage.getItem("user");
+ lastUser= JSON.parse(lastUser);
+  localStorage.setItem("user", JSON.stringify(user));
+  $("#formName").html(lastUser.FullName);
+}
+});
 
   $("#instruction").removeClass("hide2");
   $(document).keypress(function() {
@@ -41,7 +58,7 @@ window.onload = function() {
           timeLeft + " seconds remaining"
         );
         timeLeft -= 1;
-        if (timeLeft <= 0) {
+        if (timeLeft <= -1) {
           clearInterval(countdownTimer);
           $("#pressKey").addClass("hide2");
           // Shuffle questions
@@ -54,15 +71,13 @@ window.onload = function() {
           nextQuestion();
 
           //High Score Timer
-         
+
           let highscoreTimer = setInterval(function() {
             $("#highScore").value = highscore - 1;
             highscore--;
 
             if (highscore <= 0) {
-              savedScore = highscore
               clearInterval(highscoreTimer);
-
             } else if (!ended) {
               $("#yourScore").text("Highscore: " + highscore);
               $("#bestScore").text("Bestscore: " + highscore);
